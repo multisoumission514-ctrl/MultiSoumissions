@@ -103,6 +103,19 @@
     .nav-right { display: flex; align-items: center; gap: var(--s4); }
     .nav-phone { color: rgba(255,255,255,0.75); font-size: 0.875rem; font-weight: 500; text-decoration: none; display:flex; align-items:center; gap:var(--s2); }
     .nav-phone:hover { color: var(--white); }
+    .lang-toggle {
+      display: inline-flex; align-items: center; gap: 2px;
+      padding: 4px; border-radius: var(--r-full);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+    .lang-btn {
+      min-width: 36px; height: 30px; border-radius: var(--r-full);
+      color: rgba(255,255,255,0.72); font-family: var(--font-head);
+      font-weight: 800; font-size: 0.74rem; letter-spacing: 0.04em;
+      transition: background var(--tr), color var(--tr);
+    }
+    .lang-btn.is-active { background: var(--white); color: var(--navy); }
     .btn-orange {
       background: var(--orange); color: var(--white);
       padding: var(--s2) var(--s5); border-radius: var(--r-full);
@@ -240,6 +253,35 @@
     .why-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: var(--s2); }
     .why-card p { font-size: 0.875rem; color: var(--text-muted); }
 
+    /* ─── FAQ / TRUST DETAILS ─── */
+    .details-bg { background: var(--white); }
+    .details-layout {
+      display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(var(--s8), 6vw, var(--s16));
+      align-items: start;
+    }
+    .trust-proof {
+      background: var(--navy); color: white; border-radius: var(--r-xl);
+      padding: clamp(var(--s6), 4vw, var(--s8)); box-shadow: var(--shadow-lg);
+      position: sticky; top: 96px;
+    }
+    .trust-proof h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: var(--s4); color: white; }
+    .trust-proof p { color: rgba(255,255,255,0.68); line-height: 1.7; margin-bottom: var(--s5); }
+    .proof-list { list-style: none; display: grid; gap: var(--s3); }
+    .proof-list li { display: flex; gap: var(--s3); color: rgba(255,255,255,0.86); font-weight: 700; line-height: 1.45; }
+    .proof-list svg { flex: 0 0 auto; margin-top: 2px; stroke: var(--orange); }
+    .inline-link {
+      display: inline-flex; align-items: center; gap: var(--s2); color: var(--orange);
+      font-family: var(--font-head); font-weight: 800; text-decoration: none; margin-top: var(--s5);
+    }
+    .inline-link:hover { color: var(--orange-h); }
+    .faq-list { display: grid; gap: var(--s4); }
+    .faq-item {
+      background: var(--off-white); border: 1px solid var(--gray-light);
+      border-radius: var(--r-lg); padding: var(--s5); box-shadow: var(--shadow-sm);
+    }
+    .faq-item h3 { color: var(--navy); font-size: 1rem; font-weight: 800; margin-bottom: var(--s2); }
+    .faq-item p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; }
+
     /* ─── FORM ─── */
     .form-bg { background: linear-gradient(170deg, var(--navy) 0%, #1a3a6e 100%); }
     .form-wrap {
@@ -248,10 +290,40 @@
       box-shadow: 0 24px 80px rgba(0,0,0,0.35);
       max-width: 860px; margin: var(--s10) auto 0;
       border-top: 4px solid var(--orange);
+      scroll-margin-top: 72px;
     }
     .form-intro { margin-bottom: var(--s8); }
     .form-intro h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; color: var(--navy); margin-bottom: var(--s2); }
     .form-intro p { color: var(--text-muted); font-size: 0.9rem; }
+    .form-progress { margin: 0 0 var(--s6); }
+    .progress-top { display: flex; justify-content: space-between; gap: var(--s4); align-items: center; margin-bottom: var(--s3); color: var(--text-muted); font-size: 0.86rem; font-weight: 700; }
+    .progress-percent.is-hidden { visibility: hidden; }
+    .progress-bar { height: 9px; background: var(--gray-light); border-radius: var(--r-full); overflow: hidden; }
+    .progress-fill { height: 100%; width: 0%; border-radius: inherit; background: linear-gradient(90deg, var(--orange), #ff9e50); transition: width var(--tr); }
+    .quote-step { display: none; animation: fadeUp 280ms ease both; }
+    .quote-step.active { display: block; }
+    .step-kicker { font-size: 0.74rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--s2); }
+    .step-title { font-family: var(--font-head); font-size: clamp(1.35rem, 3vw, 2rem); font-weight: 800; color: var(--navy); line-height: 1.15; margin-bottom: var(--s2); }
+    .step-help { color: var(--text-muted); margin-bottom: var(--s6); font-size: 0.95rem; }
+    .option-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s3); }
+    .option-card { text-align: left; background: var(--off-white); border: 1.5px solid var(--gray-light); border-radius: var(--r-lg); padding: var(--s4); transition: border-color var(--tr), box-shadow var(--tr), transform var(--tr), background var(--tr); }
+    .option-card:hover { border-color: rgba(232,110,26,0.55); transform: translateY(-1px); background: #fff; }
+    .option-card.selected { border-color: var(--orange); background: #fff7f0; box-shadow: 0 0 0 3px rgba(232,110,26,0.13); }
+    .option-main { display: block; font-weight: 800; color: var(--navy); line-height: 1.25; }
+    .option-note { display: block; color: var(--text-muted); font-size: 0.82rem; margin-top: 4px; }
+    .form-nav { display: flex; justify-content: space-between; gap: var(--s3); margin-top: var(--s8); }
+    .btn-back, .btn-next {
+      min-height: 48px; border-radius: var(--r-full); padding: 0 var(--s5);
+      font-family: var(--font-head); font-weight: 800; transition: background var(--tr), transform var(--tr), box-shadow var(--tr);
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .btn-back { background: var(--off-white); color: var(--navy); border: 1px solid var(--gray-light); }
+    .btn-back:hover { background: #fff; transform: translateY(-1px); }
+    .btn-back[hidden] { display: none; }
+    .btn-next { background: var(--orange); color: var(--white); box-shadow: var(--shadow-orange); margin-left: auto; }
+    .btn-next:hover { background: var(--orange-h); transform: translateY(-1px); }
+    .step-error { display: none; margin-top: var(--s4); color: #b84908; font-weight: 700; font-size: 0.9rem; }
+    .step-error.visible { display: block; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5); }
     .fg { display: flex; flex-direction: column; gap: var(--s2); }
     .fg.full { grid-column: 1 / -1; }
@@ -309,6 +381,12 @@
     }
     .footer-logo { margin: 0 auto var(--s4); display: flex; justify-content: center; }
     footer p { font-size: 0.8rem; line-height: 1.7; }
+    .footer-partner-link { margin-top: var(--s2); font-size: 0.95rem; font-weight: 800; }
+    .footer-partner-link a { color: rgba(255,255,255,0.82); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+    .footer-partner-link a:hover { color: var(--orange); }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--s4); margin: var(--s4) 0 var(--s2); }
+    .footer-links a { color: rgba(255,255,255,0.72); font-size: 0.84rem; text-decoration: none; }
+    .footer-links a:hover { color: var(--orange); }
 
     /* ─── RESPONSIVE ─── */
 
@@ -324,6 +402,8 @@
       /* Nav */
       .nav { padding: 0 var(--s4); height: 60px; }
       .nav .btn-orange { display: none; }
+      .nav-right { gap: var(--s2); }
+      .lang-btn { min-width: 32px; height: 28px; font-size: 0.7rem; }
       .logo-text { font-size: 1.2rem; }
       .logo-badge { font-size: 0.38em; padding: 2px 5px; }
 
@@ -344,9 +424,15 @@
       .section-title { font-size: clamp(1.3rem, 5vw, 1.8rem); }
       .steps-row { grid-template-columns: 1fr 1fr; gap: var(--s4); }
       .why-grid { grid-template-columns: 1fr; }
+      .details-layout { grid-template-columns: 1fr; }
+      .trust-proof { position: static; }
+      .partner-grid { grid-template-columns: 1fr; }
 
       /* Form */
       .form-grid { grid-template-columns: 1fr; }
+      .option-grid { grid-template-columns: 1fr; }
+      .form-nav { flex-direction: column-reverse; }
+      .btn-back, .btn-next { width: 100%; }
       .fg.full { grid-column: 1; }
       .form-divider { grid-column: 1; }
       .form-submit-wrap { grid-column: 1; }
@@ -389,7 +475,11 @@
     </span>
   </a>
   <div class="nav-right">
-    <a href="#formulaire" class="btn-orange">Soumission gratuite</a>
+    <div class="lang-toggle" role="group" aria-label="Choisir la langue">
+      <button type="button" class="lang-btn is-active" data-lang-choice="fr" aria-pressed="true">FR</button>
+      <button type="button" class="lang-btn" data-lang-choice="en" aria-pressed="false">EN</button>
+    </div>
+    <a href="#demande-soumission" class="btn-orange">Soumission gratuite</a>
   </div>
 </nav>
 
@@ -407,7 +497,7 @@
       Remplissez notre formulaire en 2 minutes et recevez jusqu'à <strong style="color:#fff;">3 soumissions gratuites</strong> de contracteurs certifiés pour vos travaux de toiture.
     </p>
     <div class="hero-cta-wrap anim-4">
-      <a href="#formulaire" class="btn-hero">
+      <a href="#demande-soumission" class="btn-hero">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
         Obtenir mes 3 soumissions gratuites
       </a>
@@ -416,7 +506,7 @@
     <div class="hero-stats anim-5">
       <div class="hero-stat">
         <div class="hero-stat-num">3</div>
-        <div class="hero-stat-label">Soumissions reçues</div>
+        <div class="hero-stat-label">Prix à comparer</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num">100<span>%</span></div>
@@ -515,7 +605,7 @@
       <div class="why-card">
         <div class="why-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>Contracteurs vérifiés</h3>
-        <p>Tous nos partenaires sont vérifiés, assurés et qualifiés. Votre projet est entre de bonnes mains.</p>
+        <p>Les demandes sont transférées à des entrepreneurs partenaires qui détiennent une licence RBQ et qui desservent votre secteur.</p>
       </div>
       <div class="why-card">
         <div class="why-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
@@ -531,6 +621,54 @@
   </div>
 </section>
 
+<!-- ═══ FAQ / TRUST DETAILS ═══ -->
+<section class="section details-bg" aria-labelledby="faq-h2">
+  <div class="section-inner details-layout">
+    <aside class="trust-proof" aria-labelledby="trust-proof-title">
+      <p class="section-label">Confiance et transparence</p>
+      <h3 id="trust-proof-title">Un service simple, sans pression.</h3>
+      <p>MultiSoumissions Toiture sert à vous faire gagner du temps : vous remplissez une seule demande, puis vous comparez les options proposées par les couvreurs disponibles dans votre secteur.</p>
+      <ul class="proof-list">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Demande gratuite pour les propriétaires</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Aucune obligation d’accepter une soumission</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Coordonnées partagées seulement pour traiter votre demande</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Entrepreneurs partenaires avec licence RBQ</li>
+      </ul>
+      <a class="inline-link" href="comment-ca-marche.html">Voir le processus complet →</a>
+    </aside>
+
+    <div>
+      <div class="section-head">
+        <p class="section-label">Questions fréquentes</p>
+        <h2 id="faq-h2" class="section-title">Ce que les clients veulent savoir avant de demander une soumission</h2>
+        <p class="section-body">L’objectif est de vous aider à comparer sans appels inutiles et sans engagement.</p>
+      </div>
+      <div class="faq-list">
+        <article class="faq-item">
+          <h3>Est-ce vraiment gratuit ?</h3>
+          <p>Oui. La demande de soumission est gratuite pour les propriétaires et ne vous engage à rien.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Suis-je obligé d’accepter une soumission ?</h3>
+          <p>Non. Vous comparez les prix, les disponibilités et l’approche des contracteurs, puis vous choisissez librement.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Combien de temps avant d’être contacté ?</h3>
+          <p>Les demandes sont traitées rapidement. Selon votre secteur, votre type de toiture et les disponibilités, des entrepreneurs peuvent vous contacter dans les 24 à 48 heures.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Les entrepreneurs sont-ils vérifiés ?</h3>
+          <p>Les demandes sont destinées à des entrepreneurs partenaires qui détiennent une licence RBQ. Les détails du projet les aident à confirmer s’ils peuvent bien desservir votre adresse.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Mes informations restent-elles confidentielles ?</h3>
+          <p>Vos informations servent à traiter votre demande et à vous mettre en relation avec des entrepreneurs pertinents. Elles ne sont pas affichées publiquement.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ FORM ═══ -->
 <section class="section form-bg" id="formulaire" aria-labelledby="form-h2">
   <div class="section-inner--narrow">
@@ -540,124 +678,191 @@
       <p class="section-body" style="color:rgba(255,255,255,0.65); margin:0 auto;">Complétez ce formulaire et nous vous mettons en contact avec jusqu'à 3 contracteurs de votre région.</p>
     </div>
 
-    <div class="form-wrap">
+    <div class="form-wrap" id="demande-soumission">
       <form id="leadForm" action="https://formspree.io/f/maqvjbyw" method="POST" novalidate>
         <div class="form-intro">
           <h2>Votre demande de soumission</h2>
-          <p>Les champs marqués d'un <span style="color:var(--orange)">*</span> sont obligatoires.</p>
+          <p>Répondez une étape à la fois. Le questionnaire s'adapte selon votre toiture.</p>
         </div>
-        <div class="form-grid">
 
-          <div class="form-divider">Coordonnées</div>
-
-          <div class="fg">
-            <label for="prenom">Prénom <span class="req">*</span></label>
-            <input type="text" id="prenom" name="prenom" placeholder="Jean" required autocomplete="given-name">
+        <div class="form-progress" aria-hidden="true">
+          <div class="progress-top">
+            <span id="stepLabel">Étape 1 sur 6</span>
+            <span id="progressPercent" class="progress-percent is-hidden">0 % complété</span>
           </div>
-          <div class="fg">
-            <label for="nom">Nom <span class="req">*</span></label>
-            <input type="text" id="nom" name="nom" placeholder="Tremblay" required autocomplete="family-name">
-          </div>
-          <div class="fg">
-            <label for="telephone">Téléphone <span class="req">*</span></label>
-            <input type="tel" id="telephone" name="telephone" placeholder="514 000-0000" required autocomplete="tel">
-          </div>
-          <div class="fg">
-            <label for="telephone_bureau">Téléphone bureau</label>
-            <input type="tel" id="telephone_bureau" name="telephone_bureau" placeholder="514 000-0000 (optionnel)">
-          </div>
-          <div class="fg full">
-            <label for="courriel">Courriel <span class="req">*</span></label>
-            <input type="email" id="courriel" name="courriel" placeholder="jean.tremblay@email.com" required autocomplete="email">
-          </div>
-
-          <div class="form-divider">Adresse du bâtiment</div>
-
-          <div class="fg full">
-            <label for="adresse">Adresse <span class="req">*</span></label>
-            <input type="text" id="adresse" name="adresse" placeholder="123, rue des Érables" required autocomplete="street-address">
-          </div>
-          <div class="fg">
-            <label for="ville">Ville <span class="req">*</span></label>
-            <input type="text" id="ville" name="ville" placeholder="Montréal" required autocomplete="address-level2">
-          </div>
-          <div class="fg">
-            <label for="code_postal">Code postal <span class="req">*</span></label>
-            <input type="text" id="code_postal" name="code_postal" placeholder="H1A 2B3" required autocomplete="postal-code" maxlength="7">
-          </div>
-
-          <div class="form-divider">Détails de votre toiture</div>
-
-          <div class="fg">
-            <label for="age_toiture">Âge de la toiture (approximatif) <span class="req">*</span></label>
-            <select id="age_toiture" name="age_toiture" required>
-              <option value="" disabled selected>Sélectionner…</option>
-              <option>Moins de 5 ans</option>
-              <option>5 à 10 ans</option>
-              <option>10 à 15 ans</option>
-              <option>15 à 20 ans</option>
-              <option>20 à 25 ans</option>
-              <option>25 ans et plus</option>
-              <option>Je ne sais pas</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label for="type_batiment">Type de bâtiment <span class="req">*</span></label>
-            <select id="type_batiment" name="type_batiment" required>
-              <option value="" disabled selected>Sélectionner…</option>
-              <option>Unifamilial</option>
-              <option>Duplex</option>
-              <option>Triplex</option>
-              <option>Commercial</option>
-              <option>Industriel</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label for="nb_etages">Nombre d'étages <span class="req">*</span></label>
-            <select id="nb_etages" name="nb_etages" required>
-              <option value="" disabled selected>Sélectionner…</option>
-              <option>1 étage</option>
-              <option>2 étages</option>
-              <option>3 étages</option>
-              <option>4 étages et plus</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label for="type_toiture">Type de toiture <span class="req">*</span></label>
-            <select id="type_toiture" name="type_toiture" required>
-              <option value="" disabled selected>Sélectionner…</option>
-              <option>Toit de bardeau</option>
-              <option>Toit plat – membrane élastomère</option>
-              <option>Toit plat – gravier</option>
-            </select>
-          </div>
-          <div class="fg full">
-            <label for="type_travail">Type de travail <span class="req">*</span></label>
-            <select id="type_travail" name="type_travail" required>
-              <option value="" disabled selected>Sélectionner…</option>
-              <option>Urgence</option>
-              <option>Rénovation</option>
-              <option>Nouvelle construction</option>
-              <option>Appel de service (Réparation)</option>
-            </select>
-          </div>
-          <div class="fg full">
-            <label for="commentaires">Commentaires</label>
-            <textarea id="commentaires" name="commentaires" placeholder="Décrivez votre situation, les problèmes observés ou toute information utile pour les contracteurs…"></textarea>
-          </div>
-
-          <div class="form-submit-wrap">
-            <button type="submit" class="btn-submit">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
-              Envoyer ma demande de soumission
-            </button>
-            <p class="form-disclaimer">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e86e1a" stroke-width="2.5" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              Vos informations sont confidentielles et partagées uniquement avec les contracteurs partenaires. Service gratuit, sans engagement.
-            </p>
-          </div>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
         </div>
+
+        <input type="hidden" name="type_de_besoin" id="type_de_besoin">
+        <input type="hidden" name="type_de_toiture_actuelle" id="type_de_toiture_actuelle">
+        <input type="hidden" name="materiau_souhaite" id="materiau_souhaite">
+        <input type="hidden" name="superficie_ou_dimensions" id="superficie_ou_dimensions">
+        <input type="hidden" name="delai_des_travaux" id="delai_des_travaux">
+        <input type="hidden" name="langue_client" id="langue_client" value="Français">
+
+        <div class="quote-step active" data-step="besoin">
+          <p class="step-kicker">Votre projet</p>
+          <h3 class="step-title">Voulez-vous refaire ou réparer votre toiture ?</h3>
+          <p class="step-help">Choisissez l'option qui décrit le mieux votre besoin actuel.</p>
+          <div class="option-grid" data-field="type_de_besoin">
+            <button type="button" class="option-card" data-value="Refaire au complet"><span class="option-main">Refaire au complet</span></button>
+            <button type="button" class="option-card" data-value="Refaire partiellement"><span class="option-main">Refaire partiellement</span></button>
+            <button type="button" class="option-card" data-value="Réparation seulement"><span class="option-main">Réparation seulement</span></button>
+            <button type="button" class="option-card" data-value="Inspection complète"><span class="option-main">Inspection complète</span></button>
+            <button type="button" class="option-card" data-value="Autre"><span class="option-main">Autre</span></button>
+          </div>
+          <p class="step-error">Sélectionnez une réponse pour continuer.</p>
+        </div>
+
+        <div class="quote-step" data-step="toiture">
+          <p class="step-kicker">Toiture actuelle</p>
+          <h3 class="step-title">Quel type de toiture avez-vous en ce moment ?</h3>
+          <p class="step-help">Cette information aide à vous jumeler avec les bons couvreurs.</p>
+          <div class="option-grid" data-field="type_de_toiture_actuelle">
+            <button type="button" class="option-card" data-value="Toiture de bardeaux d'asphalte"><span class="option-main">Toiture de bardeaux d'asphalte</span><span class="option-note">Le plus commun en banlieue</span></button>
+            <button type="button" class="option-card" data-value="Toiture plate"><span class="option-main">Toiture plate</span><span class="option-note">Le plus commun en ville</span></button>
+            <button type="button" class="option-card" data-value="Toiture de métal"><span class="option-main">Toiture de métal</span></button>
+            <button type="button" class="option-card" data-value="Autre"><span class="option-main">Autre</span></button>
+          </div>
+          <p class="step-error">Sélectionnez une réponse pour continuer.</p>
+        </div>
+
+        <div class="quote-step" data-step="materiau-standard">
+          <p class="step-kicker">Matériau souhaité</p>
+          <h3 class="step-title">Quel matériau souhaitez-vous utiliser pour refaire votre toiture ?</h3>
+          <p class="step-help">Si vous n'êtes pas certain, choisissez simplement « Autre ».</p>
+          <div class="option-grid" data-field="materiau_souhaite">
+            <button type="button" class="option-card" data-value="Bardeaux"><span class="option-main">Bardeaux</span></button>
+            <button type="button" class="option-card" data-value="Métal/Tôle"><span class="option-main">Métal/Tôle</span></button>
+            <button type="button" class="option-card" data-value="Autre"><span class="option-main">Autre</span></button>
+          </div>
+          <p class="step-error">Sélectionnez une réponse pour continuer.</p>
+        </div>
+
+        <div class="quote-step" data-step="materiau-plat">
+          <p class="step-kicker">Matériau souhaité</p>
+          <h3 class="step-title">Quel matériau souhaitez-vous utiliser pour refaire votre toiture plate ?</h3>
+          <p class="step-help">Les contracteurs pourront confirmer le meilleur choix selon votre bâtiment.</p>
+          <div class="option-grid" data-field="materiau_souhaite">
+            <button type="button" class="option-card" data-value="Membrane élastomère"><span class="option-main">Membrane élastomère</span></button>
+            <button type="button" class="option-card" data-value="Gravier/Asphalte"><span class="option-main">Gravier/Asphalte</span></button>
+            <button type="button" class="option-card" data-value="EPDM"><span class="option-main">EPDM</span></button>
+            <button type="button" class="option-card" data-value="TPO"><span class="option-main">TPO</span></button>
+            <button type="button" class="option-card" data-value="Autre"><span class="option-main">Autre</span></button>
+          </div>
+          <p class="step-error">Sélectionnez une réponse pour continuer.</p>
+        </div>
+
+        <div class="quote-step" data-step="dimensions">
+          <p class="step-kicker">Grandeur du projet</p>
+          <h3 class="step-title">Quelles sont les dimensions de votre maison ?</h3>
+          <p class="step-help">Une approximation suffit pour recevoir des soumissions plus réalistes.</p>
+          <div class="option-grid" data-field="superficie_ou_dimensions">
+            <button type="button" class="option-card" data-value="1 000 pi² et moins"><span class="option-main">1 000 pi² et moins</span><span class="option-note">Garage ou petite maison</span></button>
+            <button type="button" class="option-card" data-value="1 001 à 2 000 pi²"><span class="option-main">1 001 à 2 000 pi²</span><span class="option-note">Maison moyenne</span></button>
+            <button type="button" class="option-card" data-value="2 001 à 2 500 pi²"><span class="option-main">2 001 à 2 500 pi²</span><span class="option-note">Grande maison</span></button>
+            <button type="button" class="option-card" data-value="2 501 à 3 000 pi²"><span class="option-main">2 501 à 3 000 pi²</span><span class="option-note">Très grande maison</span></button>
+            <button type="button" class="option-card" data-value="Autre"><span class="option-main">Autre</span></button>
+          </div>
+          <p class="step-error">Sélectionnez une réponse pour continuer.</p>
+        </div>
+
+        <div class="quote-step" data-step="superficie">
+          <p class="step-kicker">Grandeur du projet</p>
+          <h3 class="step-title">Quelle est la superficie à refaire ou à réparer ?</h3>
+          <p class="step-help">Pas besoin d'être exact. Choisissez l'estimation la plus proche.</p>
+          <div class="option-grid" data-field="superficie_ou_dimensions">
+            <button type="button" class="option-card" data-value="Petite partie - moins de 300 pi²"><span class="option-main">Petite partie</span><span class="option-note">Moins de 300 pi²</span></button>
+            <button type="button" class="option-card" data-value="Garage - 301 à 500 pi²"><span class="option-main">Garage</span><span class="option-note">301 à 500 pi²</span></button>
+            <button type="button" class="option-card" data-value="Rallonge - 301 à 500 pi²"><span class="option-main">Rallonge</span><span class="option-note">301 à 500 pi²</span></button>
+            <button type="button" class="option-card" data-value="Moitié de toiture - 501 à 1 000 pi²"><span class="option-main">Moitié de toiture</span><span class="option-note">501 à 1 000 pi²</span></button>
+            <button type="button" class="option-card" data-value="Toiture complète - 1 001 à 2 000 pi²"><span class="option-main">Toiture complète</span><span class="option-note">1 001 à 2 000 pi²</span></button>
+            <button type="button" class="option-card" data-value="Je ne sais pas"><span class="option-main">Je ne sais pas</span></button>
+            <button type="button" class="option-card" data-value="Autre"><span class="option-main">Autre</span></button>
+          </div>
+          <p class="step-error">Sélectionnez une réponse pour continuer.</p>
+        </div>
+
+        <div class="quote-step" data-step="delai">
+          <p class="step-kicker">Moment des travaux</p>
+          <h3 class="step-title">À peu près, quand voulez-vous faire les travaux ?</h3>
+          <p class="step-help">Ça aide les couvreurs disponibles rapidement à vous contacter en priorité.</p>
+          <div class="option-grid" data-field="delai_des_travaux">
+            <button type="button" class="option-card" data-value="Urgent - le plus vite possible"><span class="option-main">Urgent</span><span class="option-note">Le plus vite possible</span></button>
+            <button type="button" class="option-card" data-value="Dans le prochain mois"><span class="option-main">Dans le prochain mois</span></button>
+            <button type="button" class="option-card" data-value="Dans 2 à 3 mois"><span class="option-main">Dans 2 à 3 mois</span></button>
+            <button type="button" class="option-card" data-value="Dans plus de 3 mois"><span class="option-main">Dans plus de 3 mois</span></button>
+            <button type="button" class="option-card" data-value="Je ne suis pas certain"><span class="option-main">Je ne suis pas certain</span></button>
+          </div>
+          <p class="step-error">Sélectionnez une réponse pour continuer.</p>
+        </div>
+
+        <div class="quote-step" data-step="contact">
+          <p class="step-kicker">Coordonnées</p>
+          <h3 class="step-title">À quel nom doit être faite la soumission ?</h3>
+          <p class="step-help">Ces informations servent uniquement à vous faire contacter par les contracteurs partenaires.</p>
+          <div class="form-grid">
+            <div class="fg full">
+              <label for="nom_complet">Nom complet <span class="req">*</span></label>
+              <input type="text" id="nom_complet" name="nom_complet" placeholder="Jean Tremblay" autocomplete="name">
+            </div>
+            <div class="fg full">
+              <label for="courriel">Courriel <span class="req">*</span></label>
+              <input type="email" id="courriel" name="courriel" placeholder="jean.tremblay@email.com" autocomplete="email">
+            </div>
+          </div>
+          <p class="step-error">Entrez un nom et un courriel valide pour continuer.</p>
+        </div>
+
+        <div class="quote-step" data-step="coordonnees">
+          <p class="step-kicker">Derniers détails</p>
+          <h3 class="step-title">Où et comment les contracteurs peuvent vous joindre ?</h3>
+          <p class="step-help">L'adresse complète aide les contracteurs RBQ à confirmer s'ils desservent votre secteur.</p>
+          <div class="form-grid">
+            <div class="fg">
+              <label for="type_telephone">Type de téléphone</label>
+              <select id="type_telephone" name="type_telephone">
+                <option value="Cellulaire">Cellulaire</option>
+                <option value="Ligne fixe">Ligne fixe</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label for="telephone">Téléphone <span class="req">*</span></label>
+              <input type="tel" id="telephone" name="telephone" placeholder="514 000-0000" autocomplete="tel">
+            </div>
+            <div class="fg full" id="extensionWrap" style="display:none;">
+              <label for="extension">Extension</label>
+              <input type="text" id="extension" name="extension" placeholder="Optionnel">
+            </div>
+            <div class="fg full">
+              <label for="adresse_complete">Adresse complète <span class="req">*</span></label>
+              <input type="text" id="adresse_complete" name="adresse_complete" placeholder="123, rue des Érables" autocomplete="street-address">
+            </div>
+            <div class="fg">
+              <label for="ville">Ville <span class="req">*</span></label>
+              <input type="text" id="ville" name="ville" placeholder="Montréal" autocomplete="address-level2">
+            </div>
+            <div class="fg">
+              <label for="code_postal">Code postal <span class="req">*</span></label>
+              <input type="text" id="code_postal" name="code_postal" placeholder="H1A 2B3" autocomplete="postal-code" maxlength="7">
+            </div>
+            <div class="fg full">
+              <label for="commentaires">Commentaires</label>
+              <textarea id="commentaires" name="commentaires" placeholder="Décrivez votre situation, les problèmes observés ou toute information utile pour les contracteurs…"></textarea>
+            </div>
+          </div>
+          <p class="step-error">Entrez un téléphone valide, l'adresse complète, la ville et le code postal du projet.</p>
+        </div>
+
+        <div class="form-nav">
+          <button type="button" class="btn-back" id="prevBtn" hidden>Retour</button>
+          <button type="button" class="btn-next" id="nextBtn">Continuer</button>
+        </div>
+
+        <p class="form-disclaimer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e86e1a" stroke-width="2.5" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Vos informations sont confidentielles et partagées uniquement avec des contracteurs partenaires détenant une licence RBQ. Service gratuit, sans engagement.
+        </p>
       </form>
 
       <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
@@ -665,7 +870,7 @@
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2ea843" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
         <h3>Demande reçue avec succès !</h3>
-        <p>Merci pour votre confiance. Nos contracteurs partenaires vous contacteront dans les <strong>24 à 48 heures</strong> avec leurs soumissions.</p>
+        <p>Merci pour votre confiance. Nos contracteurs partenaires vous contacteront dans les <strong>24 à 48 heures</strong> pour vos soumissions.</p>
         <p style="font-size:0.85rem; color:#8a96a8; margin-top:var(--s2);">Gardez votre téléphone à portée de main — les contracteurs vous appelleront directement.</p>
       </div>
     </div>
@@ -680,63 +885,538 @@
     </span>
   </div>
   <p>Service de mise en relation · Soumissions gratuites pour travaux de toiture · Québec</p>
+  <nav class="footer-links" aria-label="Liens utiles">
+    <a href="comment-ca-marche.html">Comment ça marche</a>
+    <a href="confidentialite.html">Confidentialité</a>
+    <a href="mailto:multisoumission514@gmail.com">Contact courriel</a>
+  </nav>
+  <p class="footer-partner-link"><a href="contracteurs.html">Vous êtes entrepreneur ? Devenir partenaire</a></p>
   <p style="margin-top:var(--s2); opacity:0.4;">© 2026 MultiSoumissions. Tous droits réservés.</p>
 </footer>
 
+<script src="config.js"></script>
 <script>
-  // Form validation & submit
-  document.getElementById('leadForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const required = this.querySelectorAll('[required]');
-    let valid = true;
-    required.forEach(el => {
-      el.style.borderColor = '';
-      el.style.boxShadow = '';
-      if (!el.value.trim()) {
-        el.style.borderColor = '#e86e1a';
-        el.style.boxShadow = '0 0 0 3px rgba(232,110,26,0.2)';
-        valid = false;
+  // Questionnaire progressif avec branches conditionnelles
+  function trackEvent(name, detail = {}) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: name, ...detail });
+    window.msqEvents = window.msqEvents || [];
+    window.msqEvents.push({ event: name, detail, at: new Date().toISOString() });
+  }
+
+  const form = document.getElementById('leadForm');
+  const allSteps = Array.from(document.querySelectorAll('.quote-step'));
+  const state = {
+    current: 0,
+    type_de_besoin: '',
+    type_de_toiture_actuelle: '',
+    materiau_souhaite: '',
+    superficie_ou_dimensions: '',
+    delai_des_travaux: ''
+  };
+
+  const stepLabel = document.getElementById('stepLabel');
+  const progressPercent = document.getElementById('progressPercent');
+  const progressFill = document.getElementById('progressFill');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>';
+  const loadingIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>';
+  let currentLang = 'fr';
+
+  const uiText = {
+    fr: {
+      continue: 'Continuer',
+      submit: 'Envoyer ma demande',
+      loading: 'Envoi en cours…',
+      step: (current, total) => `Étape ${current} sur ${total}`,
+      percent: percent => `${percent} % complété`,
+      requiredError: "Une erreur est survenue. Veuillez réessayer ou nous contacter directement.",
+      connectionError: "Erreur de connexion. Vérifiez votre internet et réessayez.",
+      languageValue: 'Français'
+    },
+    en: {
+      continue: 'Continue',
+      submit: 'Send my request',
+      loading: 'Sending…',
+      step: (current, total) => `Step ${current} of ${total}`,
+      percent: percent => `${percent}% complete`,
+      requiredError: "Something went wrong. Please try again or contact us directly.",
+      connectionError: "Connection error. Please check your internet and try again.",
+      languageValue: 'Anglais'
+    }
+  };
+
+  const translations = [
+    { selector: 'title', type: 'text', en: 'MultiSoumissions – 3 free quotes for your roof' },
+    { selector: '.nav', attr: 'aria-label', en: 'Main navigation' },
+    { selector: '.nav-logo', attr: 'aria-label', en: 'MultiSoumissions Roofing – Home' },
+    { selector: '.lang-toggle', attr: 'aria-label', en: 'Choose language' },
+    { selector: '.btn-orange', type: 'text', en: 'Free quote' },
+    { selector: '.hero-badge', type: 'html', en: '<svg width="8" height="8" viewBox="0 0 8 8" fill="#ffaa66"><circle cx="4" cy="4" r="4"/></svg> 100% free service · No obligation' },
+    { selector: '#hero-h1', type: 'html', en: 'Your roof deserves<br><span class="highlight">the best price.</span>' },
+    { selector: '.hero-sub', type: 'html', en: 'Fill out our 2-minute form and receive up to <strong style="color:#fff;">3 free quotes</strong> from certified contractors for your roofing project.' },
+    { selector: '.btn-hero', type: 'html', en: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Get my 3 free quotes' },
+    { selector: '.hero-note', type: 'html', en: '✓ Free &nbsp;&nbsp;✓ No obligation &nbsp;&nbsp;✓ Fast response' },
+    { selector: '.hero-stat:nth-child(1) .hero-stat-label', type: 'text', en: 'Prices to compare' },
+    { selector: '.hero-stat:nth-child(2) .hero-stat-label', type: 'text', en: 'Free' },
+    { selector: '.hero-stat:nth-child(3) .hero-stat-label', type: 'text', en: 'Response time' },
+    { selector: '.hero-stat:nth-child(4) .hero-stat-label', type: 'text', en: 'Hidden fees' },
+    { selector: '.trust-item:nth-child(1)', type: 'html', en: '<div class="trust-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div> Verified and insured contractors' },
+    { selector: '.trust-item:nth-child(2)', type: 'html', en: '<div class="trust-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div> All roof and building types' },
+    { selector: '.trust-item:nth-child(3)', type: 'html', en: '<div class="trust-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div> Service available across Quebec' },
+    { selector: '.trust-item:nth-child(4)', type: 'html', en: '<div class="trust-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div> Privacy guaranteed' },
+    { selector: '.how-bg .section-label', type: 'text', en: 'How it works' },
+    { selector: '#how-h2', type: 'text', en: 'Simple, fast and free' },
+    { selector: '.how-bg .section-body', type: 'text', en: 'Our 4-step process connects you with top roofing contractors in your area.' },
+    { selector: '.step-card:nth-child(1) h3', type: 'text', en: 'Fill out the form' },
+    { selector: '.step-card:nth-child(1) p', type: 'text', en: 'Describe your building and your needs in under 2 minutes. It is free and confidential.' },
+    { selector: '.step-card:nth-child(2) h3', type: 'text', en: 'We review your request' },
+    { selector: '.step-card:nth-child(2) p', type: 'text', en: 'Our team validates your request and sends it to certified contractors in your area.' },
+    { selector: '.step-card:nth-child(3) h3', type: 'text', en: 'Receive up to 3 quotes' },
+    { selector: '.step-card:nth-child(3) p', type: 'text', en: 'Partner contractors contact you directly with a detailed quote.' },
+    { selector: '.step-card:nth-child(4) h3', type: 'text', en: 'Choose the best offer' },
+    { selector: '.step-card:nth-child(4) p', type: 'text', en: 'Compare freely. There is no obligation or commitment on your end.' },
+    { selector: '.why-bg .section-label', type: 'text', en: 'Why MultiSoumissions' },
+    { selector: '#why-h2', type: 'text', en: 'The smart way to shop for your roof' },
+    { selector: '.why-bg .section-body', type: 'text', en: 'No need to search for contractors one by one. We do the work for you.' },
+    { selector: '.why-card:nth-child(1) h3', type: 'text', en: 'All building types' },
+    { selector: '.why-card:nth-child(1) p', type: 'text', en: 'Single-family homes, duplexes, triplexes, commercial and industrial buildings. We have specialized contractors for each project.' },
+    { selector: '.why-card:nth-child(2) h3', type: 'text', en: 'Emergencies handled' },
+    { selector: '.why-card:nth-child(2) p', type: 'text', en: 'Water damage or roof damage? Our partner contractors can respond quickly for urgent situations.' },
+    { selector: '.why-card:nth-child(3) h3', type: 'text', en: 'Save time and money' },
+    { selector: '.why-card:nth-child(3) p', type: 'text', en: 'Several competitive quotes at once. You compare from a stronger position.' },
+    { selector: '.why-card:nth-child(4) h3', type: 'text', en: 'Verified contractors' },
+    { selector: '.why-card:nth-child(4) p', type: 'text', en: 'Requests are sent to partner entrepreneurs who hold an RBQ licence and serve your area.' },
+    { selector: '.why-card:nth-child(5) h3', type: 'text', en: 'Shingles, membrane, gravel' },
+    { selector: '.why-card:nth-child(5) p', type: 'text', en: 'Shingle roofs, flat elastomeric membrane roofs or gravel roofs. We cover every type of roofing.' },
+    { selector: '.why-card:nth-child(6) h3', type: 'text', en: '100% free service' },
+    { selector: '.why-card:nth-child(6) p', type: 'text', en: 'Our matching service is completely free for homeowners. No hidden commission.' },
+    { selector: '.trust-proof .section-label', type: 'text', en: 'Trust and transparency' },
+    { selector: '#trust-proof-title', type: 'text', en: 'A simple service, with no pressure.' },
+    { selector: '.trust-proof > p:nth-of-type(2)', type: 'text', en: 'MultiSoumissions Roofing saves you time: you fill out one request, then compare options from roofers available in your area.' },
+    { selector: '.trust-proof li:nth-child(1)', type: 'html', en: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Free request for homeowners' },
+    { selector: '.trust-proof li:nth-child(2)', type: 'html', en: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>No obligation to accept a quote' },
+    { selector: '.trust-proof li:nth-child(3)', type: 'html', en: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Contact details shared only to process your request' },
+    { selector: '.trust-proof li:nth-child(4)', type: 'html', en: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Partner entrepreneurs with an RBQ licence' },
+    { selector: '.inline-link', type: 'text', en: 'See the full process →' },
+    { selector: '.faq-list-wrap .section-label', type: 'text', en: 'Frequently asked questions' },
+    { selector: '#faq-h2', type: 'text', en: 'What clients want to know before requesting a quote' },
+    { selector: '.faq-list-wrap .section-body', type: 'text', en: 'The goal is to help you compare without unnecessary calls and without commitment.' },
+    { selector: '.faq-item:nth-child(1) h3', type: 'text', en: 'Is it really free?' },
+    { selector: '.faq-item:nth-child(1) p', type: 'text', en: 'Yes. The quote request is free for homeowners and does not commit you to anything.' },
+    { selector: '.faq-item:nth-child(2) h3', type: 'text', en: 'Do I have to accept a quote?' },
+    { selector: '.faq-item:nth-child(2) p', type: 'text', en: 'No. You compare prices, availability and contractor approaches, then choose freely.' },
+    { selector: '.faq-item:nth-child(3) h3', type: 'text', en: 'How long before I am contacted?' },
+    { selector: '.faq-item:nth-child(3) p', type: 'text', en: 'Requests are processed quickly. Depending on your area, roof type and availability, entrepreneurs may contact you within 24 to 48 hours.' },
+    { selector: '.faq-item:nth-child(4) h3', type: 'text', en: 'Are the entrepreneurs verified?' },
+    { selector: '.faq-item:nth-child(4) p', type: 'text', en: 'Requests are intended for partner entrepreneurs who hold an RBQ licence. Project details help them confirm whether they can serve your address.' },
+    { selector: '.faq-item:nth-child(5) h3', type: 'text', en: 'Will my information stay confidential?' },
+    { selector: '.faq-item:nth-child(5) p', type: 'text', en: 'Your information is used to process your request and connect you with relevant entrepreneurs. It is not displayed publicly.' },
+    { selector: '.form-bg .section-head .section-label', type: 'text', en: 'Request form' },
+    { selector: '#form-h2', type: 'text', en: 'Get your free quotes' },
+    { selector: '.form-bg .section-head .section-body', type: 'text', en: 'Complete this form and we will connect you with up to 3 contractors in your area.' },
+    { selector: '.form-intro h2', type: 'text', en: 'Your quote request' },
+    { selector: '.form-intro p', type: 'text', en: 'Answer one step at a time. The questionnaire adapts based on your roof.' },
+    { selector: '[data-step="besoin"] .step-kicker', type: 'text', en: 'Your project' },
+    { selector: '[data-step="besoin"] .step-title', type: 'text', en: 'Do you want to replace or repair your roof?' },
+    { selector: '[data-step="besoin"] .step-help', type: 'text', en: 'Choose the option that best describes your current need.' },
+    { selector: '[data-step="besoin"] [data-value="Refaire au complet"] .option-main', type: 'text', en: 'Full replacement' },
+    { selector: '[data-step="besoin"] [data-value="Refaire partiellement"] .option-main', type: 'text', en: 'Partial replacement' },
+    { selector: '[data-step="besoin"] [data-value="Réparation seulement"] .option-main', type: 'text', en: 'Repair only' },
+    { selector: '[data-step="besoin"] [data-value="Inspection complète"] .option-main', type: 'text', en: 'Full inspection' },
+    { selector: '[data-value="Autre"] .option-main', type: 'text', en: 'Other' },
+    { selector: '[data-step="toiture"] .step-kicker', type: 'text', en: 'Current roof' },
+    { selector: '[data-step="toiture"] .step-title', type: 'text', en: 'What type of roof do you currently have?' },
+    { selector: '[data-step="toiture"] .step-help', type: 'text', en: 'This helps match you with the right roofers.' },
+    { selector: '[data-value="Toiture de bardeaux d\\\'asphalte"] .option-main', type: 'text', en: 'Asphalt shingle roof' },
+    { selector: '[data-value="Toiture de bardeaux d\\\'asphalte"] .option-note', type: 'text', en: 'Most common in suburbs' },
+    { selector: '[data-value="Toiture plate"] .option-main', type: 'text', en: 'Flat roof' },
+    { selector: '[data-value="Toiture plate"] .option-note', type: 'text', en: 'Most common in the city' },
+    { selector: '[data-value="Toiture de métal"] .option-main', type: 'text', en: 'Metal roof' },
+    { selector: '[data-step="materiau-standard"] .step-kicker, [data-step="materiau-plat"] .step-kicker', type: 'text', en: 'Desired material' },
+    { selector: '[data-step="materiau-standard"] .step-title', type: 'text', en: 'What material would you like to use for your roof replacement?' },
+    { selector: '[data-step="materiau-standard"] .step-help', type: 'text', en: 'If you are not sure, simply choose “Other”.' },
+    { selector: '[data-value="Bardeaux"] .option-main', type: 'text', en: 'Shingles' },
+    { selector: '[data-value="Métal/Tôle"] .option-main', type: 'text', en: 'Metal / sheet metal' },
+    { selector: '[data-step="materiau-plat"] .step-title', type: 'text', en: 'What material would you like to use for your flat roof replacement?' },
+    { selector: '[data-step="materiau-plat"] .step-help', type: 'text', en: 'Contractors can confirm the best choice based on your building.' },
+    { selector: '[data-value="Membrane élastomère"] .option-main', type: 'text', en: 'Elastomeric membrane' },
+    { selector: '[data-value="Gravier/Asphalte"] .option-main', type: 'text', en: 'Gravel / asphalt' },
+    { selector: '[data-step="dimensions"] .step-kicker, [data-step="superficie"] .step-kicker', type: 'text', en: 'Project size' },
+    { selector: '[data-step="dimensions"] .step-title', type: 'text', en: 'What are the dimensions of your house?' },
+    { selector: '[data-step="dimensions"] .step-help', type: 'text', en: 'An approximation is enough to receive more realistic quotes.' },
+    { selector: '[data-value="1 000 pi² et moins"] .option-main', type: 'text', en: '1,000 sq. ft. or less' },
+    { selector: '[data-value="1 000 pi² et moins"] .option-note', type: 'text', en: 'Garage or small house' },
+    { selector: '[data-value="1 001 à 2 000 pi²"] .option-main', type: 'text', en: '1,001 to 2,000 sq. ft.' },
+    { selector: '[data-value="1 001 à 2 000 pi²"] .option-note', type: 'text', en: 'Average house' },
+    { selector: '[data-value="2 001 à 2 500 pi²"] .option-main', type: 'text', en: '2,001 to 2,500 sq. ft.' },
+    { selector: '[data-value="2 001 à 2 500 pi²"] .option-note', type: 'text', en: 'Large house' },
+    { selector: '[data-value="2 501 à 3 000 pi²"] .option-main', type: 'text', en: '2,501 to 3,000 sq. ft.' },
+    { selector: '[data-value="2 501 à 3 000 pi²"] .option-note', type: 'text', en: 'Very large house' },
+    { selector: '[data-step="superficie"] .step-title', type: 'text', en: 'What area needs to be replaced or repaired?' },
+    { selector: '[data-step="superficie"] .step-help', type: 'text', en: 'It does not need to be exact. Choose the closest estimate.' },
+    { selector: '[data-value="Petite partie - moins de 300 pi²"] .option-main', type: 'text', en: 'Small section' },
+    { selector: '[data-value="Petite partie - moins de 300 pi²"] .option-note', type: 'text', en: 'Less than 300 sq. ft.' },
+    { selector: '[data-value="Garage - 301 à 500 pi²"] .option-main', type: 'text', en: 'Garage' },
+    { selector: '[data-value="Garage - 301 à 500 pi²"] .option-note', type: 'text', en: '301 to 500 sq. ft.' },
+    { selector: '[data-value="Rallonge - 301 à 500 pi²"] .option-main', type: 'text', en: 'Addition' },
+    { selector: '[data-value="Rallonge - 301 à 500 pi²"] .option-note', type: 'text', en: '301 to 500 sq. ft.' },
+    { selector: '[data-value="Moitié de toiture - 501 à 1 000 pi²"] .option-main', type: 'text', en: 'Half roof' },
+    { selector: '[data-value="Moitié de toiture - 501 à 1 000 pi²"] .option-note', type: 'text', en: '501 to 1,000 sq. ft.' },
+    { selector: '[data-value="Toiture complète - 1 001 à 2 000 pi²"] .option-main', type: 'text', en: 'Full roof' },
+    { selector: '[data-value="Toiture complète - 1 001 à 2 000 pi²"] .option-note', type: 'text', en: '1,001 to 2,000 sq. ft.' },
+    { selector: '[data-value="Je ne sais pas"] .option-main', type: 'text', en: 'I don’t know' },
+    { selector: '[data-step="delai"] .step-kicker', type: 'text', en: 'Timing' },
+    { selector: '[data-step="delai"] .step-title', type: 'text', en: 'Approximately when would you like the work done?' },
+    { selector: '[data-step="delai"] .step-help', type: 'text', en: 'This helps available roofers contact you first.' },
+    { selector: '[data-value="Urgent - le plus vite possible"] .option-main', type: 'text', en: 'Urgent' },
+    { selector: '[data-value="Urgent - le plus vite possible"] .option-note', type: 'text', en: 'As soon as possible' },
+    { selector: '[data-value="Dans le prochain mois"] .option-main', type: 'text', en: 'Within the next month' },
+    { selector: '[data-value="Dans 2 à 3 mois"] .option-main', type: 'text', en: 'In 2 to 3 months' },
+    { selector: '[data-value="Dans plus de 3 mois"] .option-main', type: 'text', en: 'In more than 3 months' },
+    { selector: '[data-value="Je ne suis pas certain"] .option-main', type: 'text', en: 'I am not sure' },
+    { selector: '[data-step="contact"] .step-kicker', type: 'text', en: 'Contact information' },
+    { selector: '[data-step="contact"] .step-title', type: 'text', en: 'What name should the quote be made under?' },
+    { selector: '[data-step="contact"] .step-help', type: 'text', en: 'This information is used only so partner contractors can contact you.' },
+    { selector: 'label[for="nom_complet"]', type: 'html', en: 'Full name <span class="req">*</span>' },
+    { selector: 'label[for="courriel"]', type: 'html', en: 'Email <span class="req">*</span>' },
+    { selector: '[data-step="coordonnees"] .step-kicker', type: 'text', en: 'Final details' },
+    { selector: '[data-step="coordonnees"] .step-title', type: 'text', en: 'Where and how can contractors reach you?' },
+    { selector: '[data-step="coordonnees"] .step-help', type: 'text', en: 'The full address helps RBQ contractors confirm whether they serve your area.' },
+    { selector: 'label[for="type_telephone"]', type: 'text', en: 'Phone type' },
+    { selector: 'label[for="telephone"]', type: 'html', en: 'Phone <span class="req">*</span>' },
+    { selector: 'label[for="extension"]', type: 'text', en: 'Extension' },
+    { selector: 'label[for="adresse_complete"]', type: 'html', en: 'Full address <span class="req">*</span>' },
+    { selector: 'label[for="ville"]', type: 'html', en: 'City <span class="req">*</span>' },
+    { selector: 'label[for="code_postal"]', type: 'html', en: 'Postal code <span class="req">*</span>' },
+    { selector: 'label[for="commentaires"]', type: 'text', en: 'Comments' },
+    { selector: '.form-disclaimer', type: 'html', en: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e86e1a" stroke-width="2.5" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Your information is confidential and shared only with partner contractors holding an RBQ licence. Free service, no obligation.' },
+    { selector: '.form-success h3', type: 'text', en: 'Request received successfully!' },
+    { selector: '.form-success p:nth-of-type(1)', type: 'html', en: 'Thank you for your trust. Our partner contractors will contact you within <strong>24 to 48 hours</strong> for your quotes.' },
+    { selector: '.form-success p:nth-of-type(2)', type: 'text', en: 'Keep your phone nearby. Contractors will call you directly.' },
+    { selector: 'footer > p:nth-of-type(1)', type: 'text', en: 'Matching service · Free quotes for roofing work · Quebec' },
+    { selector: '.footer-links', attr: 'aria-label', en: 'Useful links' },
+    { selector: '.footer-links a:nth-child(1)', type: 'text', en: 'How it works' },
+    { selector: '.footer-links a:nth-child(2)', type: 'text', en: 'Privacy' },
+    { selector: '.footer-links a:nth-child(3)', type: 'text', en: 'Email contact' },
+    { selector: '.footer-partner-link a', type: 'text', en: 'Are you an entrepreneur? Become a partner' },
+    { selector: 'footer > p:nth-of-type(3)', type: 'text', en: '© 2026 MultiSoumissions. All rights reserved.' }
+  ];
+
+  const placeholderTranslations = [
+    { selector: '#nom_complet', en: 'John Smith' },
+    { selector: '#courriel', en: 'john.smith@email.com' },
+    { selector: '#telephone', en: '514 000-0000' },
+    { selector: '#extension', en: 'Optional' },
+    { selector: '#adresse_complete', en: '123 Maple Street' },
+    { selector: '#ville', en: 'Montreal' },
+    { selector: '#commentaires', en: 'Describe your situation, observed problems or any useful information for contractors…' }
+  ];
+
+  [...translations, ...placeholderTranslations].forEach(item => {
+    document.querySelectorAll(item.selector).forEach((el, index) => {
+      const key = item.attr ? `originalAttr_${item.attr.replace(/[^a-zA-Z0-9]/g, '_')}` : item.type === 'html' ? 'originalHtml' : item.type === 'text' ? 'originalText' : 'originalPlaceholder';
+      if (item.attr) el.dataset[key] = el.getAttribute(item.attr) || '';
+      else if (item.type === 'html') el.dataset[key] = el.innerHTML;
+      else if (item.type === 'text') el.dataset[key] = el.textContent;
+      else el.dataset[key] = el.getAttribute('placeholder') || '';
+    });
+  });
+  document.querySelectorAll('.step-error').forEach(error => {
+    error.dataset.originalText = error.textContent;
+  });
+
+  function getSubmitLabel() {
+    return `${submitIcon} ${uiText[currentLang].submit}`;
+  }
+
+  function getContinueLabel() {
+    return uiText[currentLang].continue;
+  }
+
+  function applyLanguage(lang) {
+    currentLang = lang === 'en' ? 'en' : 'fr';
+    document.documentElement.lang = currentLang === 'en' ? 'en-CA' : 'fr-CA';
+    document.getElementById('langue_client').value = uiText[currentLang].languageValue;
+
+    document.querySelectorAll('[data-lang-choice]').forEach(btn => {
+      const active = btn.dataset.langChoice === currentLang;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
+
+    translations.forEach(item => {
+      document.querySelectorAll(item.selector).forEach(el => {
+        if (item.attr) {
+          const key = `originalAttr_${item.attr.replace(/[^a-zA-Z0-9]/g, '_')}`;
+          el.setAttribute(item.attr, currentLang === 'en' ? item.en : (el.dataset[key] || ''));
+        } else if (item.type === 'html') {
+          el.innerHTML = currentLang === 'en' ? item.en : (el.dataset.originalHtml || '');
+        } else {
+          el.textContent = currentLang === 'en' ? item.en : (el.dataset.originalText || '');
+        }
+      });
+    });
+
+    placeholderTranslations.forEach(item => {
+      document.querySelectorAll(item.selector).forEach(el => {
+        el.setAttribute('placeholder', currentLang === 'en' ? item.en : (el.dataset.originalPlaceholder || ''));
+      });
+    });
+
+    const phoneType = document.getElementById('type_telephone');
+    if (phoneType) {
+      phoneType.options[0].textContent = currentLang === 'en' ? 'Cell phone' : 'Cellulaire';
+      phoneType.options[1].textContent = currentLang === 'en' ? 'Landline' : 'Ligne fixe';
+    }
+
+    document.querySelectorAll('.step-error').forEach(error => {
+      const step = error.closest('.quote-step');
+      if (currentLang === 'fr') {
+        error.textContent = error.dataset.originalText || error.textContent;
+      } else if (step?.dataset.step === 'contact') {
+        error.textContent = 'Enter a name and a valid email to continue.';
+      } else if (step?.dataset.step === 'coordonnees') {
+        error.textContent = 'Enter a valid phone number, full address, city and postal code for the project.';
+      } else {
+        error.textContent = 'Select an answer to continue.';
       }
     });
-    if (!valid) {
-      const first = this.querySelector('[required][style*="border-color"]');
-      if (first) { first.focus(); first.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+
+    showStep();
+  }
+
+  function getFlow() {
+    const flow = ['besoin', 'toiture'];
+    if (state.type_de_besoin === 'Refaire au complet') {
+      flow.push(state.type_de_toiture_actuelle === 'Toiture plate' ? 'materiau-plat' : 'materiau-standard');
+      flow.push('dimensions');
+    } else if (state.type_de_besoin === 'Inspection complète') {
+      flow.push('dimensions');
+    } else {
+      flow.push('superficie');
+    }
+    flow.push('delai', 'contact', 'coordonnees');
+    return flow;
+  }
+
+  function visibleSteps() {
+    const flow = getFlow();
+    return flow.map(name => document.querySelector(`[data-step="${name}"]`)).filter(Boolean);
+  }
+
+  function setHidden(field, value) {
+    const input = document.getElementById(field);
+    if (input) input.value = value || '';
+  }
+
+  function clearField(field) {
+    state[field] = '';
+    setHidden(field, '');
+    document.querySelectorAll(`[data-field="${field}"] .option-card`).forEach(btn => btn.classList.remove('selected'));
+  }
+
+  function showStep() {
+    const steps = visibleSteps();
+    if (state.current >= steps.length) state.current = steps.length - 1;
+    if (state.current < 0) state.current = 0;
+    allSteps.forEach(step => step.classList.remove('active'));
+    steps[state.current].classList.add('active');
+
+    const percent = Math.round(((state.current + 1) / steps.length) * 100);
+    stepLabel.textContent = uiText[currentLang].step(state.current + 1, steps.length);
+    progressPercent.textContent = uiText[currentLang].percent(percent);
+    progressPercent.classList.toggle('is-hidden', state.current === 0);
+    progressFill.style.width = `${percent}%`;
+    prevBtn.hidden = state.current === 0;
+    nextBtn.innerHTML = state.current === steps.length - 1 ? getSubmitLabel() : getContinueLabel();
+  }
+
+  function showError(step, visible) {
+    const error = step.querySelector('.step-error');
+    if (error) error.classList.toggle('visible', visible);
+  }
+
+  function markInvalid(el) {
+    el.style.borderColor = '#e86e1a';
+    el.style.boxShadow = '0 0 0 3px rgba(232,110,26,0.2)';
+  }
+
+  function clearInvalid(el) {
+    el.style.borderColor = '';
+    el.style.boxShadow = '';
+  }
+
+  function validateStep(step) {
+    showError(step, false);
+    const choiceGroup = step.querySelector('[data-field]');
+    if (choiceGroup) {
+      const field = choiceGroup.dataset.field;
+      const valid = Boolean(state[field]);
+      showError(step, !valid);
+      return valid;
+    }
+
+    if (step.dataset.step === 'contact') {
+      const name = document.getElementById('nom_complet');
+      const email = document.getElementById('courriel');
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+      [name, email].forEach(clearInvalid);
+      if (!name.value.trim()) markInvalid(name);
+      if (!emailOk) markInvalid(email);
+      const valid = Boolean(name.value.trim() && emailOk);
+      showError(step, !valid);
+      return valid;
+    }
+
+    if (step.dataset.step === 'coordonnees') {
+      const phone = document.getElementById('telephone');
+      const address = document.getElementById('adresse_complete');
+      const city = document.getElementById('ville');
+      const postal = document.getElementById('code_postal');
+      const phoneDigits = phone.value.replace(/\D/g, '');
+      [phone, address, city, postal].forEach(clearInvalid);
+      if (phoneDigits.length !== 10) markInvalid(phone);
+      if (!address.value.trim()) markInvalid(address);
+      if (!city.value.trim()) markInvalid(city);
+      if (!postal.value.trim()) markInvalid(postal);
+      const valid = phoneDigits.length === 10 && Boolean(address.value.trim() && city.value.trim() && postal.value.trim());
+      showError(step, !valid);
+      return valid;
+    }
+
+    return true;
+  }
+
+  function formatPhone(value) {
+    const digits = value.replace(/\D/g, '').slice(0, 10);
+    if (digits.length <= 3) return digits;
+    if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+  }
+
+  document.querySelectorAll('.option-card').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest('[data-field]');
+      const currentStep = btn.closest('.quote-step');
+      const field = group.dataset.field;
+      const value = btn.dataset.value;
+      group.querySelectorAll('.option-card').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      state[field] = value;
+      setHidden(field, value);
+      showError(currentStep, false);
+      trackEvent('questionnaire_answered', { field, value, step: currentStep.dataset.step });
+      if (field === 'type_de_besoin') trackEvent('questionnaire_started', { first_answer: value });
+
+      if (field === 'type_de_besoin') {
+        clearField('materiau_souhaite');
+        clearField('superficie_ou_dimensions');
+      }
+      if (field === 'type_de_toiture_actuelle') {
+        clearField('materiau_souhaite');
+      }
+
+      const steps = visibleSteps();
+      const isVisibleStep = steps[state.current] === currentStep;
+      if (isVisibleStep && state.current < steps.length - 1) {
+        window.setTimeout(() => {
+          state.current += 1;
+          showStep();
+        }, 180);
+      }
+    });
+  });
+
+  prevBtn.addEventListener('click', () => {
+    state.current -= 1;
+    showStep();
+  });
+
+  nextBtn.addEventListener('click', async () => {
+    const steps = visibleSteps();
+    const step = steps[state.current];
+    if (!validateStep(step)) return;
+
+    if (state.current < steps.length - 1) {
+      state.current += 1;
+      showStep();
       return;
     }
 
-    // Disable button & show loading
-    const btn = this.querySelector('.btn-submit');
-    btn.disabled = true;
-    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Envoi en cours…';
+    nextBtn.disabled = true;
+    nextBtn.innerHTML = `${loadingIcon} ${uiText[currentLang].loading}`;
 
     try {
-      const data = new FormData(this);
-      const response = await fetch('https://formspree.io/f/maqvjbyw', {
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.type_de_demande = 'Client toiture';
+      const appsScriptUrl = window.MULTISOUMISSIONS_APPS_SCRIPT_URL || '';
+      const isLocalPreview = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const apiBase = '__PORT_8000__'.startsWith('__') ? 'http://127.0.0.1:8000' : '__PORT_8000__';
+      const endpoint = appsScriptUrl || (isLocalPreview ? `${apiBase}/api/lead` : form.action);
+      const response = await fetch(endpoint, {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        body: appsScriptUrl ? new URLSearchParams(data) : JSON.stringify(data),
+        headers: appsScriptUrl
+          ? { 'Accept': 'application/json' }
+          : { 'Accept': 'application/json', 'Content-Type': 'application/json' }
       });
 
       if (response.ok) {
-        this.style.display = 'none';
-        const s = document.getElementById('formSuccess');
-        s.classList.add('visible');
-        document.getElementById('formulaire').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        trackEvent('quote_submit_success', {
+          besoin: state.type_de_besoin,
+          toiture: state.type_de_toiture_actuelle,
+          ville: document.getElementById('ville').value.trim()
+        });
+        const name = encodeURIComponent(document.getElementById('nom_complet').value.trim());
+        const langParam = currentLang === 'en' ? '&lang=en' : '';
+        window.location.href = `merci.html?nom=${name}${langParam}`;
       } else {
-        btn.disabled = false;
-        btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> Envoyer ma demande de soumission';
-        alert("Une erreur est survenue. Veuillez réessayer ou nous contacter directement.");
+        nextBtn.disabled = false;
+        nextBtn.innerHTML = getSubmitLabel();
+        alert(uiText[currentLang].requiredError);
       }
     } catch(err) {
-      btn.disabled = false;
-      btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> Envoyer ma demande de soumission';
-      alert("Erreur de connexion. Vérifiez votre internet et réessayez.");
+      nextBtn.disabled = false;
+      nextBtn.innerHTML = getSubmitLabel();
+      alert(uiText[currentLang].connectionError);
     }
   });
 
-  document.querySelectorAll('input, select, textarea').forEach(el => {
-    el.addEventListener('input', () => { el.style.borderColor = ''; el.style.boxShadow = ''; });
+  document.getElementById('telephone').addEventListener('input', e => {
+    e.target.value = formatPhone(e.target.value);
+    clearInvalid(e.target);
   });
+
+  document.getElementById('type_telephone').addEventListener('change', e => {
+    document.getElementById('extensionWrap').style.display = e.target.value === 'Ligne fixe' ? 'flex' : 'none';
+  });
+
+  document.querySelectorAll('input, select, textarea').forEach(el => {
+    el.addEventListener('input', () => clearInvalid(el));
+  });
+
+  document.querySelectorAll('a[href="#demande-soumission"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      trackEvent('quote_cta_click', { text: link.textContent.trim() });
+      const target = document.getElementById('demande-soumission');
+      if (!target) return;
+      const top = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.history.pushState(null, '', '#demande-soumission');
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  document.querySelectorAll('[data-lang-choice]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyLanguage(btn.dataset.langChoice);
+      trackEvent('language_changed', { language: currentLang });
+    });
+  });
+
+  applyLanguage('fr');
 
   // Scroll reveal
   const obs = new IntersectionObserver(entries => {

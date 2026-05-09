@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demande reçue – MultiSoumissions Toiture</title>
+  <meta name="description" content="Votre demande de soumission toiture a bien été reçue. Ajoutez des photos si vous en avez pour aider les contracteurs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:#0d2040;
+      --navy-dark:#091628;
+      --orange:#e86e1a;
+      --orange-h:#d45c08;
+      --white:#fff;
+      --off-white:#f4f6fa;
+      --text:#1a2233;
+      --muted:#5a6478;
+      --line:#e8ecf2;
+      --success:#2ea843;
+      --shadow:0 24px 70px rgba(13,32,64,0.16);
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { min-height:100vh; font-family:Inter, system-ui, sans-serif; color:var(--text); background:linear-gradient(135deg, var(--navy-dark), var(--navy)); }
+    .topbar { min-height:72px; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:0 clamp(18px, 5vw, 56px); border-bottom:3px solid var(--orange); color:white; }
+    .logo { color:white; font-family:Montserrat, sans-serif; font-size:clamp(1.1rem, 3vw, 1.55rem); font-weight:900; letter-spacing:-0.04em; text-decoration:none; }
+    .logo span { color:var(--orange); }
+    .back { color:white; text-decoration:none; font-weight:800; border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:10px 16px; background:rgba(255,255,255,.08); }
+    main { padding:clamp(42px, 8vw, 92px) 20px; }
+    .wrap { max-width:850px; margin:0 auto; }
+    .card { background:var(--white); border-radius:28px; padding:clamp(28px, 6vw, 58px); box-shadow:var(--shadow); }
+    .success { width:76px; height:76px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(46,168,67,.11); margin-bottom:24px; }
+    h1 { font-family:Montserrat, sans-serif; color:var(--navy); font-size:clamp(2rem, 5vw, 3.7rem); line-height:1; letter-spacing:-0.06em; margin-bottom:18px; }
+    p { color:var(--muted); line-height:1.7; font-size:1.02rem; max-width:66ch; }
+    .notice { margin:28px 0; padding:20px; border-radius:18px; background:var(--off-white); border:1px solid var(--line); }
+    .notice strong { display:block; color:var(--navy); margin-bottom:6px; font-size:1.05rem; }
+    .next-steps { display:grid; gap:12px; margin:28px 0; counter-reset: steps; }
+    .next-step { display:grid; grid-template-columns:44px 1fr; gap:14px; align-items:start; }
+    .next-step::before {
+      counter-increment: steps; content:counter(steps);
+      width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+      background:var(--navy); color:white; font-weight:900; font-family:Montserrat, sans-serif;
+    }
+    .next-step strong { display:block; color:var(--navy); margin-bottom:3px; }
+    .next-step p { font-size:.95rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:30px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0 22px; border-radius:999px; text-decoration:none; font-weight:900; }
+    .btn-primary { background:var(--orange); color:white; box-shadow:0 12px 34px rgba(232,110,26,.28); }
+    .btn-primary:hover { background:var(--orange-h); }
+    .btn-secondary { color:var(--navy); background:var(--off-white); border:1px solid var(--line); }
+    .mini { margin-top:22px; font-size:.88rem; color:#7b8496; }
+    @media (max-width:640px) {
+      .topbar { align-items:flex-start; flex-direction:column; padding-top:16px; padding-bottom:16px; }
+      .actions { flex-direction:column; }
+      .btn { width:100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="index.html">Multi<span>✓</span>Soumissions <small style="font-size:.52em; border:1px solid var(--orange); border-radius:5px; padding:3px 6px; color:var(--orange); letter-spacing:0;">TOITURE</small></a>
+    <a class="back" href="index.html">Retour au site</a>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="card" aria-labelledby="thanks-title">
+        <div class="success" aria-hidden="true">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2.7"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h1 id="thanks-title">Demande reçue.</h1>
+        <p>Merci pour votre confiance. Votre demande a été transmise à MultiSoumissions et un courriel de confirmation vient de vous être envoyé.</p>
+        <div class="next-steps" aria-label="Prochaines étapes">
+          <div class="next-step">
+            <div><strong>Surveillez votre téléphone</strong><p>Des entrepreneurs partenaires pourraient vous appeler directement dans les 24 à 48 heures.</p></div>
+          </div>
+          <div class="next-step">
+            <div><strong>Préparez vos photos</strong><p>Une photo générale de la toiture, une photo du problème et une photo de l’accès au bâtiment peuvent aider.</p></div>
+          </div>
+          <div class="next-step">
+            <div><strong>Comparez librement</strong><p>Vous n’êtes pas obligé d’accepter une soumission. Prenez le temps de comparer le prix, le délai et les explications.</p></div>
+          </div>
+        </div>
+        <div class="notice">
+          <strong>Vous avez des photos de votre toiture ?</strong>
+          <p>Ce n’est pas obligatoire, mais quelques photos peuvent aider les contracteurs RBQ à mieux comprendre le projet avant de vous appeler.</p>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" id="photoEmail" href="mailto:multisoumission514@gmail.com?subject=Photos%20toiture%20-%20demande%20de%20soumission&body=Bonjour%2C%0A%0AVoici%20les%20photos%20de%20ma%20toiture%20pour%20ma%20demande%20de%20soumission.%0A%0ANom%20%3A%20%0AT%C3%A9l%C3%A9phone%20%3A%20%0AAdresse%20%3A%20%0A%0AMerci.">Envoyer mes photos par courriel</a>
+          <a class="btn btn-secondary" href="index.html">Retour à l’accueil</a>
+        </div>
+        <p class="mini">Gardez votre téléphone à portée de main. Les contracteurs partenaires pourraient vous appeler directement dans les 24 à 48 heures.</p>
+      </section>
+    </div>
+  </main>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang') === 'en' ? 'en' : 'fr';
+    if (lang === 'en') {
+      document.documentElement.lang = 'en-CA';
+      document.title = 'Request received – MultiSoumissions Roofing';
+      document.querySelector('meta[name="description"]').setAttribute('content', 'Your roofing quote request has been received. Add photos if you have them to help contractors.');
+      document.querySelector('.back').textContent = 'Back to site';
+      document.getElementById('thanks-title').textContent = 'Request received.';
+      document.querySelector('.card > p').textContent = 'Thank you for your trust. Your request has been sent to MultiSoumissions and a confirmation email has just been sent to you.';
+      document.querySelector('.next-steps').setAttribute('aria-label', 'Next steps');
+      const steps = document.querySelectorAll('.next-step');
+      steps[0].querySelector('strong').textContent = 'Watch your phone';
+      steps[0].querySelector('p').textContent = 'Partner entrepreneurs may call you directly within 24 to 48 hours.';
+      steps[1].querySelector('strong').textContent = 'Prepare your photos';
+      steps[1].querySelector('p').textContent = 'A general photo of the roof, a photo of the issue and a photo of the building access can help.';
+      steps[2].querySelector('strong').textContent = 'Compare freely';
+      steps[2].querySelector('p').textContent = 'You are not obligated to accept a quote. Take time to compare the price, timeline and explanations.';
+      document.querySelector('.notice strong').textContent = 'Do you have photos of your roof?';
+      document.querySelector('.notice p').textContent = 'It is not mandatory, but a few photos can help RBQ contractors better understand the project before calling you.';
+      document.getElementById('photoEmail').textContent = 'Send my photos by email';
+      document.getElementById('photoEmail').href = 'mailto:multisoumission514@gmail.com?subject=Roof%20photos%20-%20quote%20request&body=Hello%2C%0A%0AHere%20are%20the%20photos%20of%20my%20roof%20for%20my%20quote%20request.%0A%0AName%3A%20%0APhone%3A%20%0AAddress%3A%20%0A%0AThank%20you.';
+      document.querySelector('.btn-secondary').textContent = 'Back to home';
+      document.querySelector('.mini').textContent = 'Keep your phone nearby. Partner contractors may call you directly within 24 to 48 hours.';
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'thank_you_page_view', language: lang });
+  </script>
+</body>
+</html>
